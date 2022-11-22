@@ -65,7 +65,7 @@ class PostRepository
     public function dbConnect()
     {
         if ($this->database === null) {
-            $this->database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', 'password');
+            $this->database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', '');
         }
     }
 }

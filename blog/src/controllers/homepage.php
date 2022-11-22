@@ -13,3 +13,5 @@ function callHomepage()
 
 	require('templates/homepage.php');
 }
+
+?>
