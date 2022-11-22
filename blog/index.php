@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once('src/controllers/add_comment.php');
+//require_once('src/controllers/add_comment.php');
 require_once('src/controllers/homepage.php');
-require_once('src/controllers/post.php');
+//require_once('src/controllers/post.php');
 require_once('src/controllers/authentication_controller.php');
 
 try {
