@@ -6,7 +6,10 @@ $title = "Le blog de Lewis"; ?>
 
 <?php ob_start(); ?>
 <h1>Le super blog de Lewis !</h1>
-<a href="index.php?action=login">Login</a>
+<?php  if (!isset($_SESSION['user'])) echo "<a href='index.php?action=login'>Login</a>";
+    else echo '<a href="index.php?action=logout">Log out</a><div> "bonjour' . $_SESSION['name'] . '!" </div>';
+?>
+
 <p>Derniers billets du blog :</p>
 
 <?php

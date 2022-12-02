@@ -32,6 +32,8 @@ try {
                 handleLogin();
             }
         } elseif ($_GET['action'] === 'logout') {
+            session_destroy();
+            callHomepage();
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }

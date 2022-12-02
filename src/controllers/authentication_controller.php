@@ -10,6 +10,7 @@ function loginPage(){
 function handleLogin(){
 	$database = dbConnect();
     $statement = $database->prepare('select * from users where email=:email and password=:password');
+	$username = $database->prepare('select name from users where name=:name');
 
     $statement->execute([
 		'email' => $_POST['email'], 
@@ -24,6 +25,7 @@ function handleLogin(){
 	}
 
 	//if $_SESSION is not empty with id or role or what ever, consider the user as logged in
+	$_SESSION['name'] = $username;
 	$_SESSION['user'] = $user; 
 	header('location: index.php');
 	//the most robust and secure way to secure an app: keep it simple
