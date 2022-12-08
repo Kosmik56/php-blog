@@ -6,6 +6,10 @@ $title = "Le blog de Lewis"; ?>
 
 <?php ob_start(); ?>
 <h1>Le super blog de Lewis !</h1>
+<?php  if (!isset($_SESSION['user'])) echo "<a href='index.php?action=login'>Login</a>";
+    else echo '<a href="index.php?action=logout">Log out</a><div> "bonjour' . $_SESSION['user'] . '!" </div>';
+?>
+
 <p>Derniers billets du blog :</p>
 
 <?php
@@ -29,13 +33,4 @@ foreach ($posts as $post) {
 <?php
 
 require_once('src/model/post.php');
-
-function homepage()
-{
-    $postRepository = new PostRepository();
-    $posts = $postRepository->getPosts();
-
-    require('templates/homepage.php');
-}
-?>
-<?php require('layout.php') ?>
+require('layout.php') ?>

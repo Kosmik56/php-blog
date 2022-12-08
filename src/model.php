@@ -42,7 +42,9 @@ function getPost($identifier)
 
 function dbConnect()
 {
-    $database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', 'password');
+    $database = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'blog', '');
 
     return $database;
 }
+
+//TODO: refactor this file to separate getPost and getPosts, move dbConnect to database.php
