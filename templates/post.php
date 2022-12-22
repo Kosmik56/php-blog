@@ -19,10 +19,6 @@
 
 <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
     <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
-    </div>
-    <div>
         <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
@@ -34,7 +30,7 @@
 <?php
 foreach ($comments as $comment) {
 ?>
-    <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?></p>
+    <p><strong><?= htmlspecialchars($comment->name) ?></strong> le <?= $comment->frenchCreationDate ?></p>
     <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php
 }
