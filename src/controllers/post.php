@@ -12,6 +12,6 @@ function post(string $identifier)
     $postRepository->connection = new DatabaseConnection();
     $post = $postRepository->getPost($identifier);
     $comments = getComments($identifier);
-
+    
     require('templates/post.php');
 }
