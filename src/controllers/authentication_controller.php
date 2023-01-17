@@ -4,7 +4,7 @@ require_once('src/model.php');
 
 function loginPage()
 {
-	require('templates/authentication/loginPage.php');
+	require('templates/authentication/login_page.php');
 }
 
 function handleLogin()

@@ -1,7 +1,7 @@
 <?php
 function signupPage()
 {
-    require('templates\signupPage.php');
+    require('templates\signup_page.php');
 }
 
 function handleSignup()
@@ -9,8 +9,6 @@ function handleSignup()
     // Sanitize email
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     //password_encrypt() to encrypt emails
-
-    //TODO: add check to verify unicity of identifications in here... Somewhere
 
 
     $database = dbConnect();

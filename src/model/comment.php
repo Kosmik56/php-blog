@@ -28,15 +28,15 @@ function getComments(string $post): array
     return $comments;
 }
 
-function createComment(string $post, string $author, string $comment)
+function createComment(string $post, string $comment)
 {
     $database = commentDbConnect();
     $statement = $database->prepare(
-        'INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())'
+        'INSERT INTO comments(post_id, comment, user_id) VALUES(?, ?, ?)'
     );
-    $affectedLines = $statement->execute([$post, $author, $comment]);
+    $result = $statement->execute([$post, $comment, $_SESSION['user']['id']]);
+    return $result;
 
-    return ($affectedLines > 0);
 }
  
 function commentDbConnect()
