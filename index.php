@@ -4,7 +4,8 @@ require_once('src/controllers/add_comment.php');
 require_once('src/controllers/homepage.php');
 require_once('src/controllers/post.php');
 require_once('src/controllers/authentication_controller.php');
-require_once('src/controllers/signupController.php');
+require_once('src/controllers/signup_controller.php');
+require_once('src/controllers/add_post.php');
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -13,7 +14,7 @@ try {
                 $identifier = $_GET['id'];
 
                 post($identifier);
-            } else {
+            } else { 
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         } elseif ($_GET['action'] === 'addComment') {
@@ -39,7 +40,16 @@ try {
         } elseif ($_GET['action'] === 'logout') {
             session_destroy();
             callHomepage();
-        } else {
+        } 
+        elseif($_GET['action'] == 'add_content') {
+            add_post_page();
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                add_post_page();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                add_content();
+            }
+        }
+        else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
     } else {
