@@ -4,6 +4,7 @@ require_once('src/controllers/add_comment.php');
 require_once('src/controllers/homepage.php');
 require_once('src/controllers/post.php');
 require_once('src/controllers/authentication_controller.php');
+require_once('src/controllers/signupController.php');
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -19,16 +20,20 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
 
-               addComment($identifier, $_POST);
+                addComment($identifier, $_POST);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($_GET['action'] === 'login') {
-            
-            if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                loginPage();
+        } elseif ($_GET['action'] === 'signup') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                signupPage();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                handleSignup();
             }
-            elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
+        } elseif ($_GET['action'] === 'login') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                loginPage();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 handleLogin();
             }
         } elseif ($_GET['action'] === 'logout') {
@@ -45,4 +50,3 @@ try {
 
     require('templates/error.php');
 }
-//TODO: refactor code into a switch:case

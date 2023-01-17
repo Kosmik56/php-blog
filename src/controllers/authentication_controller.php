@@ -10,17 +10,15 @@ function loginPage()
 function handleLogin()
 {
 	$database = dbConnect();
-	$statement = $database->prepare('select * from users where email=:email and password=:password');
+	$statement = $database->prepare('select * from users where email=:email');
 
 	$statement->execute([
 		'email' => $_POST['email'],
-		'password' => $_POST['password'],
 
 	]);
 
 	$user = $statement->fetch();
-
-	if ($user == null) {
+	if(!password_verify($_POST['password'], $user['password'])){
 		throw new Exception('login inccorect');
 	}
 
