@@ -4,7 +4,7 @@ function getPosts()
 {
     $database = dbConnect();
     $statement = $database->query(
-        "SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5"
+        "SELECT id, title, content, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY created_at DESC LIMIT 0, 5"
     );
     $posts = [];
     while (($row = $statement->fetch())) {
@@ -25,7 +25,7 @@ function getPost($identifier)
 {
     $database = dbConnect();
     $statement = $database->prepare(
-        "SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?"
+        "SELECT id, title, content, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?"
     );
     $statement->execute([$identifier]);
 
@@ -46,5 +46,3 @@ function dbConnect()
 
     return $database;
 }
-
-//TODO: refactor this file to separate getPost and getPosts, move dbConnect to database.php
