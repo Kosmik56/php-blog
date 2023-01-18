@@ -10,7 +10,9 @@ $title = "Le blog de Lewis"; ?>
     <a href="index.php?action=logout">Log out</a>
     <div> bonjour <?php $_SESSION['user']; ?> ! </div>
 
+<?php if ($_SESSION['user']['admin'] == 1) { ?>
     <button><a href="index.php?action=add_content">Add a new post!</a></button>
+<?php } ?>
 
 <?php } ?>
 
@@ -28,6 +30,7 @@ foreach ($posts as $post) {
             <?= nl2br(htmlspecialchars($post->content)); ?>
             <br />
             <em><a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">Commentaires</a></em>
+            
         </p>
     </div>
 <?php
@@ -35,6 +38,6 @@ foreach ($posts as $post) {
 ?>
 <?php $content = ob_get_clean(); ?>
 <?php
-
 require_once('src/model/post.php');
 require('layout.php') ?>
+<a href="" class="more_posts_link"> plus de billets</a>
