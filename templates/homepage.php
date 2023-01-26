@@ -30,6 +30,7 @@ foreach ($posts as $post) {
             <?= nl2br(htmlspecialchars($post->content)); ?>
             <br />
             <em><a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">Commentaires</a></em>
+            
         </p>
     </div>
 <?php
@@ -37,7 +38,6 @@ foreach ($posts as $post) {
 ?>
 <?php $content = ob_get_clean(); ?>
 <?php
-
 require_once('src/model/post.php');
 require('layout.php') ?>
 
