@@ -25,3 +25,55 @@ a
     text-decoration: none;
     color: blue;
 }
+
+*{
+    box-sizing: border-box;
+}
+html,body{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background: #f0f0f0;
+    font: normal normal 14px Open Sans,Verdana, Arial;
+}
+.main-container{
+    max-width: 1024px;
+    margin: 0px auto;
+}
+.section {
+    padding: 15px;
+}
+.form-control {
+    padding: 10px;
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 5px;
+    color: #444;
+}
+.btn-green{
+    display: inline-block;
+    padding: 5px 10px;
+    cursor: pointer;
+    background: #00a65a;
+    border: 1px solid #009549;
+    color: #fff;
+    width: 100%;
+}
+.captcha-box{
+    max-width: 300px;
+    background: #ddd;
+    padding: 10px;
+}
+.captcha-message{
+    background: #fff;
+    padding: 5px;
+    text-align: center;
+    color: #009549;
+    border: 1px solid #009549;
+    margin-bottom: 10px;
+}
+.captcha-message.error{
+    color: #DD1A16;
+    border: 1px solid #DD1A16;
+}

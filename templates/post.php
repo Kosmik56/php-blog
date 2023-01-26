@@ -17,6 +17,7 @@
 
 <h2>Commentaires</h2>
 
+<?php if (isset($_SESSION['user'])) {?>
 <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
     <div>
         <label for="comment">Commentaire</label><br />
@@ -26,7 +27,7 @@
         <input type="submit" />
     </div>
 </form>
-
+<?php } ?>
 <?php
 foreach ($comments as $comment) {
 ?>
