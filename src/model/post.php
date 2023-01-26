@@ -42,11 +42,12 @@ class PostRepository
         return $post;
     }
 
-    public function getPosts(): array
+    public function getPosts(bool $getAllPosts = false): array
     {
-        $statement = $this->connection->getConnection()->query(
-            "SELECT id, title, content, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY created_at DESC LIMIT 0, 5"
-        );
+        $query = "SELECT id, title, content, DATE_FORMAT(created_at, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY created_at DESC";
+        $query = $getAllPosts ? $query : $query.' LIMIT 0, 5';
+
+        $statement = $this->connection->getConnection()->query($query);
 
         $posts = [];
         while (($row = $statement->fetch())) {
@@ -55,7 +56,7 @@ class PostRepository
             $post->frenchCreationDate = $row['french_creation_date'];
             $post->content = $row['content'];
             $post->identifier = $row['id'];
-
+            
             $posts[] = $post;
         }
 

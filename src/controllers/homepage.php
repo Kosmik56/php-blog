@@ -5,11 +5,11 @@ require_once('src/model/post.php');
 
 use Application\Model\Post\PostRepository;
 
-function callHomepage()
+function callHomepage(bool $show_all = false)
 {
+
 	$postRepository = new PostRepository();
 	$postRepository->connection = new DatabaseConnection();
-	$posts = $postRepository->getPosts();
-
+	$posts = $show_all ? $postRepository->getPosts(true): $postRepository->getPosts();
 	require('templates/homepage.php');
 }
