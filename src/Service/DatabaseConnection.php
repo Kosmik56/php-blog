@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Service;
+
+use PDO;
+
 class DatabaseConnection
 {
 	public ?PDO $database = null;
