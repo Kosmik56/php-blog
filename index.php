@@ -1,48 +1,66 @@
 <?php
 session_start();
-require_once('src/controllers/add_comment.php');
-require_once('src/controllers/homepage.php');
-require_once('src/controllers/post.php');
-require_once('src/controllers/authentication_controller.php');
+
+use App\Controller\AuthenticationController;
+use App\Controller\CommentController;
+use App\Controller\PostController;
+use App\Controller\AppController;
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$post = new PostController;
+$authentication = new AuthenticationController;
+$comment = new CommentController;
+$app = new AppController;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
         if ($_GET['action'] === 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
-
-                post($identifier);
-            } else {
+                $post->show($identifier);
+            } else { 
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         } elseif ($_GET['action'] === 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
-
-               addComment($identifier, $_POST);
+                $comment->create($identifier, $_POST);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($_GET['action'] === 'login') {
-            
-            if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                loginPage();
+        } elseif ($_GET['action'] === 'signup') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $authentication->signupPage();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $authentication->handleSignup();
             }
-            elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
-                handleLogin();
+        } elseif ($_GET['action'] === 'login') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $authentication->loginPage();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $authentication->handleLogin();
             }
         } elseif ($_GET['action'] === 'logout') {
+            session_unset();
             session_destroy();
-            callHomepage();
-        } else {
+            $app->callHomepage();
+        } 
+        elseif($_GET['action'] == 'add_content') {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+                $post->form();
+            } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $post->create();
+            }
+        }
+        else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
     } else {
-        callHomepage();
+        $show_all = isset($_GET['show_all']) && 1 == $_GET['show_all'] ? true : false; 
+        $app->callHomepage($show_all);
     }
 } catch (Exception $e) {
     $errorMessage = $e->getMessage();
-
     require('templates/error.php');
 }
-//TODO: refactor code into a switch:case

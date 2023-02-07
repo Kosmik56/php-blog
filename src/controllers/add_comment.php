@@ -4,19 +4,20 @@ require_once('src/model/comment.php');
 
 function addComment(string $post, array $input)
 {
-    $author = null;
-    $comment = null;
-    if (!empty($input['author']) && !empty($input['comment'])) {
-        $author = $input['author'];
-        $comment = $input['comment'];
-    } else {
-        throw new Exception('Les données du formulaire sont invalides.');
+    if (!isset($_SESSION['user'])) {
+        throw new Exception("Veuillez vous connecter pour rajouter un commentaire.");  
     }
-
-    $success = createComment($post, $author, $comment);
+       
+        $comment = null;
+        if (!empty($input['comment'])) {
+            $comment = $input['comment'];
+        } else {
+            throw new Exception('Les données du formulaire sont invalides.');
+        }
+    $success = createComment($post, $comment, $_SESSION['user']['id']);
     if (!$success) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     } else {
         header('Location: index.php?action=post&id=' . $post);
     }
-}
+} 
