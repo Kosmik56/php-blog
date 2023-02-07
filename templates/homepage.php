@@ -1,48 +1,33 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+</head>
+<body>
+<div class="about-section">
+  <h1>About Us Page</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
 
-$title = "Le blog de Lewis"; ?>
-
-<?php ob_start(); ?>
-<h1><a href="index.php">Le super blog de Lewis !</a></h1>
-<?php if (!isset($_SESSION['user'])) { ?>
-    <a href='index.php?action=login'>Login</a> or <a href='index.php?action=signup'>sign up</a>
-<?php } else { ?>
-    <a href="index.php?action=logout">Log out</a>
-    <div> bonjour <?php $_SESSION['user']; ?> ! </div>
-
-    <?php if ($_SESSION['user']['admin'] == 1) { ?>
-        <button><a href="index.php?action=add_content">Add a new post!</a></button>
-    <?php } ?>
-
-<?php } ?>
-
-<p>Derniers billets du blog :</p>
-
-<?php
-foreach ($posts as $post) {
-?>
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($post->title); ?>
-            <em>le <?= $post->frenchCreationDate; ?></em>
-        </h3>
-        <p>
-            <?= nl2br(htmlspecialchars($post->content)); ?>
-            <br />
-            <em><a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">Commentaires</a></em>
-            
-        </p>
+<h2 style="text-align:center">Me</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team1.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">Jr. Developper</p>
+        <p>lorem ipsum ipsum lorem.</p>
+        <p>lewis.kidd56@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
     </div>
-<?php
-}
-?>
-<?php $content = ob_get_clean(); ?>
-<?php
-require_once('src/model/post.php');
-require('layout.php') ?>
+  </div>
 
-<?php if (!isset($_GET['show_all']) || $_GET['show_all'] != 1) { ?>
-    <a href="index.php?show_all=1" class="more_posts_link"> Afficher plus</a>
-<?php } else { ?>
-    <a href="index.php?show_all=0" class="more_posts_link"> Afficher moins</a>
-<?php } ?>
+
+</body>
+</html>
