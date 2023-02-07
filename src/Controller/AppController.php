@@ -15,6 +15,6 @@ class AppController
     public function callHomepage(bool $show_all = false)
     {
         $posts = $show_all ? $this->postRepository->getPosts(true) : $this->postRepository->getPosts();
-        require('templates/homepage.php');
+        require('templates/blog.php');
     }
 }
