@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<a href="index.php?action=blog"><img src="src\files\me.png" alt="Lewis" style="width:5%"></a> <div>click me to access my blog!</div>
+<a href="index.php?action=blog"><img src="src\files\me.png" alt="Lewis"></a> <div>click me to access my blog!</div>
   <div class="about-section">
     <h1>Le premier site de Lewis Kidd!</h1>
     <p>Bonjour! Je m'appelle Lewis et je suis un développeur junior chez Direct Optic en apprentissage chez OpenClassrooms. <br>
@@ -43,10 +43,10 @@
         </div>
         <div>
           <label for="text">Saissisez votre message</label><br />
-          <textarea id="contact_content" name="contact_content" placeholder="Bonjour Lewis, ..."></textarea>
+          <textarea id="contact_content" name="contact_content" placeholder="Bonjour Lewis, ..." class="contact-me-form"></textarea>
         </div>
         <div>
-          <input type="submit" />
+          <input type="submit"  />
         </div>
       </form>
     </div>

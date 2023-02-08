@@ -45,4 +45,4 @@ foreach ($posts as $post) {
     <a href="index.php?show_all=0" class="more_posts_link"> Afficher moins</a>
 <?php } ?>
 
-<button class="a_propos"><a href="index.php?action=homepage">A propos</a></button>
+<button class="a-propos"><a href="index.php?action=homepage">A propos</a></button>

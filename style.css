@@ -83,11 +83,27 @@ body{
     
 }
 
-.my_face{
-    size: 5%;
-}
-
-.a_propos{
+.a-propos{
     display: flex;
     
+}
+
+.about-section{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.row{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+img{
+    width: 60px;
+    height: 60px;
+}
+
+.contact-me-form{
+    width: 33%;
+    height: 120px;
 }
