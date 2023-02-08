@@ -44,7 +44,7 @@ try {
         } elseif ($_GET['action'] === 'logout') {
             session_unset();
             session_destroy();
-            $app->callHomepage();
+            $app->callBlog();
         } 
         elseif($_GET['action'] == 'add_content') {
             if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -53,12 +53,18 @@ try {
                 $post->create();
             }
         }
+        elseif($_GET['action'] == 'homepage'){
+            $app->callHomepage();
+        }
+        elseif($_GET['action'] == 'blog'){
+            $app->callBlog();
+        }
         else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
     } else {
         $show_all = isset($_GET['show_all']) && 1 == $_GET['show_all'] ? true : false; 
-        $app->callHomepage($show_all);
+        $app->callBlog($show_all);
     }
 } catch (Exception $e) {
     $errorMessage = $e->getMessage();
