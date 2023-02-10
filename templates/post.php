@@ -7,7 +7,7 @@
 <div class="news">
     <h3>
         <?= htmlspecialchars($post->title) ?>
-        <em>le <?= $post->frenchCreationDate ?></em>
+        <em>le <?= htmlspecialchars($post->frenchCreationDate); ?></em>
     </h3>
 
     <p>
