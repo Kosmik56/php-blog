@@ -72,8 +72,11 @@ try {
                 $post->create();
             }
         }
-        elseif($action === 'index') {
-            $app->callHomepage($showAll);
+        elseif($action === 'homepage' || $action === 'index') {
+            $app->callHomepage();
+        }
+        elseif($action === 'blog'){
+            $app->callBlog($showAll);
         }
         else {
             http_response_code(404);
