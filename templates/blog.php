@@ -24,7 +24,7 @@ foreach ($posts as $post) {
     <div class="news">
         <h3>
             <?= htmlspecialchars($post->title); ?>
-            <em>le <?= $post->frenchCreationDate; ?></em>
+            <em>le <?= htmlspecialchars($post->frenchCreationDate); ?></em>
         </h3>
         <p>
             <?= nl2br(htmlspecialchars($post->content)); ?>
@@ -39,10 +39,10 @@ foreach ($posts as $post) {
 <?php $content = ob_get_clean(); ?>
 <?php require('layout.php'); ?>
 
-<?php if (!isset($_GET['show_all']) || $_GET['show_all'] != 1) { ?>
+<!-- <?php if (!isset($_GET['show_all']) || $_GET['show_all'] != 1) { ?>
     <a href="index.php?show_all=1" class="more_posts_link"> Afficher plus</a>
 <?php } else { ?>
     <a href="index.php?show_all=0" class="more_posts_link"> Afficher moins</a>
-<?php } ?>
+<?php } ?> -->
 
 <button class="a-propos"><a href="index.php?action=homepage">A propos</a></button>

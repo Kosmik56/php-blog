@@ -5,6 +5,7 @@ namespace App\Repository;
 use PDO;
 use App\Service\DatabaseConnection;
 use App\Model\Post;
+use Exception;
 
 class PostRepository extends AbstractRepository
 {
@@ -18,7 +19,9 @@ class PostRepository extends AbstractRepository
         $statement->execute([$identifier]);
 
         $row = $statement->fetch();
-
+        if ($row === false){
+            throw new Exception('Enregistrement introuvable');
+        }
         $post = new Post();
         $post->title = $row['title'];
         $post->frenchCreationDate = $row['french_creation_date'];
@@ -37,6 +40,9 @@ class PostRepository extends AbstractRepository
 
         $posts = [];
         while (($row = $statement->fetch())) {
+            if ($row === false){
+                throw new Exception('Enregistrement introuvable');
+            }
             $post = new Post();
             $post->title = $row['title'];
             $post->frenchCreationDate = $row['french_creation_date'];

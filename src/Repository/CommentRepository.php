@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Model\Comment;
 use App\Model\Post;
+use Exception;
 
 class CommentRepository extends AbstractRepository
 {
@@ -28,6 +29,9 @@ class CommentRepository extends AbstractRepository
 
         $comments = [];
         while (($row = $statement->fetch())) {
+            if ($row === false){
+                throw new Exception('Enregistrement introuvable');
+            }
             $comment = new Comment();
             $comment->name = $row['name'];
             $comment->frenchCreationDate = $row['french_creation_date'];
