@@ -36,6 +36,9 @@ class UserRepository extends AbstractRepository
         ]);
 
         $user = $statement->fetch();
+        if ($user === false){
+            throw new Exception('Enregistrement introuvable');
+        }
         if (!password_verify($data['password'], $user['password'])) {
             throw new Exception('login inccorect');
         }
