@@ -38,7 +38,7 @@ class AuthenticationController
         $user = $this->userRepository->login($data);
         //if $_SESSION is not empty with id or role or what ever, consider the user as logged in
         $_SESSION['user'] = $user;
-        header('location: index.php');
+        header('location: index.php?action=blog');
         //the most robust and secure way to secure an app: keep it simple
     }
 }

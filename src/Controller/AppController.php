@@ -12,9 +12,13 @@ class AppController
         $this->postRepository = new PostRepository;
     }
 
-    public function callHomepage(bool $show_all = false)
+    public function callBlog(bool $show_all = false)
     {
         $posts = $show_all ? $this->postRepository->getPosts(true) : $this->postRepository->getPosts();
         require('templates/blog.php');
+    }
+
+    public function callHomepage(){
+        require('templates/homepage.php');
     }
 }
