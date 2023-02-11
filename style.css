@@ -1,23 +1,20 @@
-h1, h3
-{
-    text-align: center;
+h1,
+h3 {
+  text-align: center;
 }
-h3
-{
-    background-color: black;
-    color: white;
-    font-size: 0.9em;
-    margin-bottom: 0px;
+h3 {
+  background-color: black;
+  color: white;
+  font-size: 0.9em;
+  margin-bottom: 0px;
 }
-.news p
-{
-    background-color: #CCCCCC;
-    margin-top: 0px;
+.news p {
+  background-color: #cccccc;
+  margin-top: 0px;
 }
-.news
-{
-    width: 70%;
-    margin: auto;
+.news {
+  width: 70%;
+  margin: auto;
 }
 
 a {
@@ -105,37 +102,41 @@ img {
   width: 33%;
   height: 120px;
 }
-.captcha-message.error{
-    color: #DD1A16;
-    border: 1px solid #DD1A16;
+.captcha-message.error {
+  color: #dd1a16;
+  border: 1px solid #dd1a16;
 }
 
-.about-section{
-    margin-top: 10px;
-    
+.about-section {
+  margin-top: 10px;
 }
 
-.a-propos{
-    display: flex;
-    
+.a-propos {
+  display: flex;
 }
 
-.about-section{
-    margin-left: 20px;
-    margin-right: 20px;
+.about-section {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.row{
-    margin-left: 20px;
-    margin-right: 20px;
+.row {
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-img{
-    width: 60px;
-    height: 60px;
+img {
+  width: 60px;
+  height: 60px;
 }
 
-.contact-me-form{
-    width: 33%;
-    height: 120px;
+.contact-me-form {
+  width: 33%;
+  height: 120px;
+}
+
+.chapo {
+  text-align: center;
+  margin-bottom: 0;
+  background-color: #ffffff !important;
 }
