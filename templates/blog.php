@@ -26,11 +26,15 @@ foreach ($posts as $post) {
             <?= htmlspecialchars($post->title); ?>
             <em>le <?= htmlspecialchars($post->frenchCreationDate); ?></em>
         </h3>
+
+        <p class="chapo">
+            <?= htmlspecialchars($post->chapo) ?>
+        </p>
         <p>
             <?= nl2br(htmlspecialchars($post->content)); ?>
             <br />
             <em><a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">Commentaires</a></em>
-            
+
         </p>
     </div>
 <?php

@@ -8,8 +8,12 @@
     <h3>
         <?= htmlspecialchars($post->title) ?>
         <em>le <?= htmlspecialchars($post->frenchCreationDate); ?></em>
+
     </h3>
 
+    <chapo>
+        <?= htmlspecialchars($post->chapo) ?>
+    </chapo>
     <p>
         <?= nl2br(htmlspecialchars($post->content)) ?>
     </p>
@@ -17,16 +21,16 @@
 
 <h2>Commentaires</h2>
 
-<?php if (isset($_SESSION['user'])) {?>
-<form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
-    <div>
-        <label for="comment">Commentaire</label><br />
-        <textarea id="comment" onkeyup="checkInput()" name="comment"></textarea>
-    </div>
-    <div>
-        <input type="submit" id='submit_button1' style="display: none;"/>
-    </div>
-</form>
+<?php if (isset($_SESSION['user'])) { ?>
+    <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
+        <div>
+            <label for="comment">Commentaire</label><br />
+            <textarea id="comment" onkeyup="checkInput()" name="comment"></textarea>
+        </div>
+        <div>
+            <input type="submit" id='submit_button1' style="display: none;" />
+        </div>
+    </form>
 <?php } ?>
 <?php
 foreach ($comments as $comment) {
@@ -41,9 +45,9 @@ foreach ($comments as $comment) {
 <?php require('layout.php') ?>
 
 <script>
-    function checkInput(){
-        let comment =  document.getElementById('comment').value;
+    function checkInput() {
+        let comment = document.getElementById('comment').value;
         if (!comment) document.getElementById('submit_button1').style.display = 'none';
         else document.getElementById('submit_button1').style.display = 'block';
-        }
+    }
 </script>
